@@ -1,3 +1,7 @@
+*{
+  margin: 0;
+  padding: 0;
+}
 body {
   font-family: Arial, sans-serif;
   background-color: #f2f7fb;
@@ -28,4 +32,9 @@ h1 {
   font-size: 28px;
   margin: 0;
   color: #111;
+}
+
+footer{
+ font-family: Arial, sans-serif;
+  color: #1f2e3c;
 }

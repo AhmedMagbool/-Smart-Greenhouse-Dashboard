@@ -4,10 +4,11 @@
 A smart monitoring and automation system for greenhouse environments using the ESP32 and Wokwi simulator. The dashboard is powered by **Blynk** and displays real-time data for temperature, humidity, light intensity, motion detection, irrigation, and pesticide control.
 
 [![image](https://github.com/user-attachments/assets/3d73c744-ab07-4cd1-9653-b14c99618e6f)
-](https://ahmedmagbool.github.io/-Smart-Greenhouse-Dashboard/)
 
-(https://github.com/ahmedmagbool/Smart-Greenhouse-Dashboard/assets/your-image-id/dashboard.png)
 
+]
+
+(https://ahmedmagbool.github.io/-Smart-Greenhouse-Dashboard/)
 ---
 
 ## 🚀 Features

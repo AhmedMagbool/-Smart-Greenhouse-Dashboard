@@ -1,4 +1,4 @@
-const token = "DlJZcZcY2eY8lEZ1fbrDSwpoRadDQ8_q";
+const token = "ea7cLspSM6TftGafZ3SqohwZT38qJgxL";
 const base = "https://blynk.cloud/external/api/get";
 
 let humidityData = [];

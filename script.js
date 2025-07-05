@@ -4,13 +4,13 @@
 
   // Firebase config (استبدله بمعلومات مشروعك)
   const firebaseConfig = {
-    apiKey: "AIzaSyAZeoxpSBsoC6lL-ziQgfFJMrTUNiDFhAg",
-    authDomain: "esp32-b2aa3.firebaseapp.com",
-    databaseURL: "https://esp32-b2aa3-default-rtdb.firebaseio.com",
-    projectId: "esp32-b2aa3",
-    storageBucket: "esp32-b2aa3.appspot.com",
-    messagingSenderId: "YOUR_ID",
-    appId: "YOUR_APP_ID"
+   apiKey: "AIzaSyAZeoxpSBsoC6lL-ziQgfFJMrTUNiDFhAg",
+  authDomain: "esp32-b2aa3.firebaseapp.com",
+  databaseURL: "https://esp32-b2aa3-default-rtdb.firebaseio.com",
+  projectId: "esp32-b2aa3",
+  storageBucket: "esp32-b2aa3.firebasestorage.app",
+  messagingSenderId: "598432712887",
+  appId: "1:598432712887:web:880c470b7b4a54d38f2532"
   };
 
   const app = initializeApp(firebaseConfig);

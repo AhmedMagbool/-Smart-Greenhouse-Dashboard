@@ -19,7 +19,7 @@ const translations = {
     footer: `Made by <a href="#">Ahmed</a> & <a href="#">Abdulmajeed</a>`
   },
   ar: {
-    title: "🌿 لوحة تحكم الدفيئة الذكية",
+    title: "🌿 لوحة تحكم البيت المحمي الذكي",
     tempLabel: "🌡️ الحرارة",
     humLabel: "💧 الرطوبة",
     lightLabel: "💡 الإضاءة",

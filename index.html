@@ -1,41 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>🌿 Smart Greenhouse Dashboard</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link rel="stylesheet" href="style.css">
-
-   
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <img src="logo-h.png" alt="logo" width="160" height="80">
-    <h1>🌿 Smart Greenhouse Dashboard</h1>
+    <img src="logo-h.png" alt="logo" width="160" height="80" />
+    <h1 id="title">🌿 Smart Greenhouse Dashboard</h1>
+    <div class="controls">
+      <button onclick="toggleLanguage()" id="langBtn">عربي</button>
+      <button onclick="toggleTheme()" id="themeBtn">🌙</button>
+    </div>
   </header>
 
   <div class="cards">
-    <div class="card"><p>🌡️ Temperature</p><h2 id="temp">--</h2></div>
-    <div class="card"><p>💧 Humidity</p><h2 id="hum">--</h2></div>
-    <div class="card"><p>💡 Light</p><h2 id="light">--</h2></div>
-    <div class="card"><p>🚶 Motion</p><h2 id="motion">--</h2></div>
-    <div class="card"><p>💦 Irrigation</p><h2 id="irrigation">--</h2></div>
-    <div class="card"><p>🧪 Pesticide</p><h2 id="pesticide">--</h2></div>
-    <div class="card"><p>⏰ Time</p><h2 id="time">--</h2></div>
+    <div class="card"><p id="tempLabel">🌡️ Temperature</p><h2 id="temp">--</h2></div>
+    <div class="card"><p id="humLabel">💧 Humidity</p><h2 id="hum">--</h2></div>
+    <div class="card"><p id="lightLabel">💡 Light</p><h2 id="light">--</h2></div>
+    <div class="card"><p id="motionLabel">🚶 Motion</p><h2 id="motion">--</h2></div>
+    <div class="card"><p id="irrigationLabel">💦 Irrigation</p><h2 id="irrigation">--</h2></div>
+    <div class="card"><p id="pesticideLabel">🧪 Pesticide</p><h2 id="pesticide">--</h2></div>
+    <div class="card"><p id="timeLabel">⏰ Time</p><h2 id="time">--</h2></div>
   </div>
 
-  <div style="width: 90%; max-width: 1000px; margin: auto;">
+  <div style="width: 90%; max-width: 1000px; margin: auto">
     <canvas id="humidityChart" height="120"></canvas>
   </div>
 
-  <footer>
-    <p>Made by <a href="https://www.linkedin.com/in/ahmed-magbool-0192001b1/">Ahmed</a> &
-       <a href="https://www.linkedin.com/in/abdulmajeed-al-shammari-2625a3287">Abdulmajeed</a></p>
+  <footer id="footer">
+    <p>Made by <a href="#">Ahmed</a> & <a href="#">Abdulmajeed</a></p>
   </footer>
 
-  
   <script type="module" src="script.js"></script>
+  <script src="ui.js"></script>
 </body>
 </html>

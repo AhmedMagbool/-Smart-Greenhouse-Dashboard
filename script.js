@@ -3,13 +3,12 @@ import { getDatabase, ref, get, child } from "https://www.gstatic.com/firebasejs
 import { currentLang, toArabicNumber } from './ui.js';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAZeoxpSBsoC6lL-ziQgfFJMrTUNiDFhAg",
-  authDomain: "esp32-b2aa3.firebaseapp.com",
-  databaseURL: "https://esp32-b2aa3-default-rtdb.firebaseio.com",
-  projectId: "esp32-b2aa3",
-  storageBucket: "esp32-b2aa3.appspot.com",
-  messagingSenderId: "598432712887",
-  appId: "1:598432712887:web:880c470b7b4a54d38f2532"
+  apiKey: "AIzaSyDjFP9cWi8HbgM406Aj--GOHEiMxj0n_rA",
+  authDomain: "greenhouse-cb489.firebaseapp.com",
+  projectId: "greenhouse-cb489",
+  storageBucket: "greenhouse-cb489.firebasestorage.app",
+  messagingSenderId: "370429557990",
+  appId: "1:370429557990:web:8cc8bf30090a0ccf788f27"
 };
 
 const app = initializeApp(firebaseConfig);

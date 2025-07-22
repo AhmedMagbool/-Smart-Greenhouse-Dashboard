@@ -6,7 +6,7 @@ const firebaseConfig = {
   apiKey: "AIzaSyDjFP9cWi8HbgM406Aj--GOHEiMxj0n_rA",
   authDomain: "greenhouse-cb489.firebaseapp.com",
   projectId: "greenhouse-cb489",
-  storageBucket: "greenhouse-cb489.firebasestorage.app",
+  storageBucket: "greenhouse-cb489.appspot.com",
   messagingSenderId: "370429557990",
   appId: "1:370429557990:web:8cc8bf30090a0ccf788f27"
 };
@@ -72,6 +72,8 @@ async function fetchLogData() {
       document.getElementById("motion").innerText = latestEntry.motion === 1 ? "تشغيل" : "إيقاف";
       document.getElementById("irrigation").innerText = latestEntry.irrigation === 1 ? "تشغيل" : "إيقاف";
       document.getElementById("pesticide").innerText = latestEntry.pesticide === 1 ? "تشغيل" : "إيقاف";
+      document.getElementById("soil").innerText = latestEntry.soil === "wet" ? "رطبة" : "جافة";
+      document.getElementById("water").innerText = toArabicNumber(latestEntry.waterLevel);
       document.getElementById("time").innerText = toArabicNumber(formatTimestamp(latestKey));
     } else {
       document.getElementById("temp").innerText = latestEntry.temperature + " °C";
@@ -80,6 +82,8 @@ async function fetchLogData() {
       document.getElementById("motion").innerText = latestEntry.motion === 1 ? "ON" : "OFF";
       document.getElementById("irrigation").innerText = latestEntry.irrigation === 1 ? "ON" : "OFF";
       document.getElementById("pesticide").innerText = latestEntry.pesticide === 1 ? "ON" : "OFF";
+      document.getElementById("soil").innerText = latestEntry.soil;
+      document.getElementById("water").innerText = latestEntry.waterLevel;
       document.getElementById("time").innerText = formatTimestamp(latestKey);
     }
 

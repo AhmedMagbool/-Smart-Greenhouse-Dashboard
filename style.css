@@ -71,7 +71,6 @@ header {
 .card h2 {
   margin: 10px 0 0;
   font-size: 1.4em;
-  word-wrap: break-word;
 }
 
 canvas {
@@ -91,15 +90,4 @@ footer {
 footer a {
   color: #2e7d32;
   text-decoration: none;
-}
-
-@media (max-width: 600px) {
-  .card h2 {
-    font-size: 1.1em;
-  }
-
-  .controls button {
-    padding: 5px 10px;
-    font-size: 0.9em;
-  }
 }

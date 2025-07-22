@@ -14,6 +14,8 @@ const translations = {
     motionLabel: "🚶 Motion",
     irrigationLabel: "💦 Irrigation",
     pesticideLabel: "🧪 Pesticide",
+    soilLabel: "🌱 Soil",
+    waterLabel: "🚰 Water Level",
     timeLabel: "⏰ Time",
     langBtn: "عربي",
     footer: `Made by <a href="#">Ahmed</a> & <a href="#">Abdulmajeed</a>`
@@ -26,6 +28,8 @@ const translations = {
     motionLabel: "🚶 الحركة",
     irrigationLabel: "💦 الري",
     pesticideLabel: "🧪 المبيدات",
+    soilLabel: "🌱 التربة",
+    waterLabel: "🚰 مستوى الماء",
     timeLabel: "⏰ الوقت",
     langBtn: "English",
     footer: `صُنع بواسطة <a href="#">أحمد</a> و <a href="#">عبدالمجيد</a>`
@@ -43,6 +47,8 @@ window.toggleLanguage = function () {
   document.getElementById("motionLabel").innerText = t.motionLabel;
   document.getElementById("irrigationLabel").innerText = t.irrigationLabel;
   document.getElementById("pesticideLabel").innerText = t.pesticideLabel;
+  document.getElementById("soilLabel").innerText = t.soilLabel;
+  document.getElementById("waterLabel").innerText = t.waterLabel;
   document.getElementById("timeLabel").innerText = t.timeLabel;
   document.getElementById("langBtn").innerText = t.langBtn;
   document.getElementById("footer").innerHTML = t.footer;

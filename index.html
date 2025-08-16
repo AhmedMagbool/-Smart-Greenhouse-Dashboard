@@ -1,39 +1,201 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl" data-theme="dark">
 <head>
-  <meta charset="UTF-8">
-  <title>🌿 Smart Greenhouse Dashboard</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
-  <header>
-    <img src="https://tuwaiq.edu.sa/img/logo.svg" alt="Tuwaiq Academy" width="160" />
-    <h1 id="title">🌿 Smart Greenhouse Dashboard</h1>
-    <div class="controls">
-      <button id="langBtn" onclick="toggleLanguage()">عربي</button>
-      <button id="themeBtn" onclick="toggleTheme()">🌙</button>
-    </div>
-  </header>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>مراقبة البيت المحمي - ESP32</title>
 
-  <div class="cards">
-    <div class="card"><div id="tempLabel">🌡️ Temperature</div><h2 id="tempVal">--</h2></div>
-    <div class="card"><div id="humLabel">💧 Humidity</div><h2 id="humVal">--</h2></div>
-    <div class="card"><div id="lightLabel">💡 Light</div><h2 id="lightVal">--</h2></div>
-    <div class="card"><div id="waterLabel">🌊 Water Level</div><h2 id="waterVal">--</h2></div>
-    <div class="card"><div id="soilLabel">🌱 Soil</div><h2 id="soilVal">--</h2></div>
-    <div class="card"><div id="timeLabel">⏰ Time</div><h2 id="timeVal">--</h2></div>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body class="dark-mode">
+  <div class="container">
+    <header class="header">
+      <div class="header-left">
+        <h1>
+          <i class="fas fa-seedling"></i>
+          <span data-ar="مراقبة البيت المحمي" data-en="Greenhouse Monitor">مراقبة البيت المحمي</span>
+        </h1>
+      </div>
+
+      <div class="header-controls">
+        <div class="control-group">
+          <!-- تم إزالة زر تغيير الثيم نهائياً -->
+          <button class="control-btn" id="langToggle" title="تبديل اللغة">
+            <span class="lang-text">EN</span>
+          </button>
+        </div>
+
+        <div class="status-indicator" id="connectionStatus">
+          <span class="status-dot offline"></span>
+          <span data-ar="غير متصل" data-en="Offline">غير متصل</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="dashboard">
+      <div class="cards-grid enhanced">
+        <div class="sensor-card temperature">
+          <div class="card-header">
+            <h3>
+              <i class="fas fa-thermometer-half sensor-icon"></i>
+              <span data-ar="درجة الحرارة" data-en="Temperature">درجة الحرارة</span>
+            </h3>
+            <span class="unit">°C</span>
+          </div>
+          <div class="card-value" id="temperature">--</div>
+          <div class="card-status" id="tempStatus" data-ar="جاري القراءة..." data-en="Reading...">جاري القراءة...</div>
+          <div class="card-trend" id="tempTrend">
+            <i class="fas fa-minus trend-icon"></i>
+            <span data-ar="مستقر" data-en="Stable">مستقر</span>
+          </div>
+        </div>
+
+        <div class="sensor-card humidity">
+          <div class="card-header">
+            <h3>
+              <i class="fas fa-tint sensor-icon"></i>
+              <span data-ar="الرطوبة الجوية" data-en="Air Humidity">الرطوبة الجوية</span>
+            </h3>
+            <span class="unit">%RH</span>
+          </div>
+          <div class="card-value" id="humidity">--</div>
+          <div class="card-status" id="humidityStatus" data-ar="جاري القراءة..." data-en="Reading...">جاري القراءة...</div>
+          <div class="card-trend" id="humidityTrend">
+            <i class="fas fa-minus trend-icon"></i>
+            <span data-ar="مستقر" data-en="Stable">مستقر</span>
+          </div>
+        </div>
+
+        <div class="sensor-card soil">
+          <div class="card-header">
+            <h3>
+              <i class="fas fa-seedling sensor-icon"></i>
+              <span data-ar="رطوبة التربة" data-en="Soil Moisture">رطوبة التربة</span>
+            </h3>
+            <span class="unit">%</span>
+          </div>
+          <div class="card-value" id="soilMoisture">--</div>
+          <div class="card-status" id="soilStatus" data-ar="جاري القراءة..." data-en="Reading...">جاري القراءة...</div>
+          <div class="card-trend" id="soilTrend">
+            <i class="fas fa-minus trend-icon"></i>
+            <span data-ar="مستقر" data-en="Stable">مستقر</span>
+          </div>
+        </div>
+
+        <div class="sensor-card light">
+          <div class="card-header">
+            <h3>
+              <i class="fas fa-sun sensor-icon"></i>
+              <span data-ar="شدة الإضاءة" data-en="Light Intensity">شدة الإضاءة</span>
+            </h3>
+            <span class="unit">Lux</span>
+          </div>
+          <div class="card-value" id="lightIntensity">--</div>
+          <div class="card-status" id="lightStatus" data-ar="جاري القراءة..." data-en="Reading...">جاري القراءة...</div>
+          <div class="card-trend" id="lightTrend">
+            <i class="fas fa-minus trend-icon"></i>
+            <span data-ar="مستقر" data-en="Stable">مستقر</span>
+          </div>
+        </div>
+
+        <div class="sensor-card water">
+          <div class="card-header">
+            <h3>
+              <i class="fas fa-faucet sensor-icon"></i>
+              <span data-ar="مستوى الماء" data-en="Water Level">مستوى الماء</span>
+            </h3>
+            <span class="unit">cm</span>
+          </div>
+          <div class="card-value" id="waterLevel">--</div>
+          <div class="card-status" id="waterStatus" data-ar="جاري القراءة..." data-en="Reading...">جاري القراءة...</div>
+          <div class="card-trend" id="waterTrend">
+            <i class="fas fa-minus trend-icon"></i>
+            <span data-ar="مستقر" data-en="Stable">مستقر</span>
+          </div>
+        </div>
+
+        <div class="sensor-card time">
+          <div class="card-header">
+            <h3>
+              <i class="fas fa-clock sensor-icon"></i>
+              <span data-ar="آخر تحديث" data-en="Last Update">آخر تحديث</span>
+            </h3>
+          </div>
+          <div class="card-value small" id="lastUpdate">--</div>
+          <div class="card-status" id="updateStatus" data-ar="في انتظار البيانات" data-en="Waiting for data">في انتظار البيانات</div>
+          <div class="card-info">
+            <i class="fas fa-info-circle"></i>
+            <span data-ar="تحديث كل 30 ثانية" data-en="Updates every 30 seconds">تحديث كل 30 ثانية</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats-section">
+        <div class="stats-card">
+          <h3>
+            <i class="fas fa-chart-bar"></i>
+            <span data-ar="إحصائيات اليوم" data-en="Today's Statistics">إحصائيات اليوم</span>
+          </h3>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-label" data-ar="أعلى حرارة" data-en="Max Temperature">أعلى حرارة</div>
+              <div class="stat-value" id="maxTemp">--°C</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-label" data-ar="أقل حرارة" data-en="Min Temperature">أقل حرارة</div>
+              <div class="stat-value" id="minTemp">--°C</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-label" data-ar="متوسط الرطوبة" data-en="Avg Humidity">متوسط الرطوبة</div>
+              <div class="stat-value" id="avgHumidity">--%</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-label" data-ar="إجمالي الإضاءة" data-en="Total Light">إجمالي الإضاءة</div>
+              <div class="stat-value" id="totalLight">-- Lux</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="environment-card">
+          <h3>
+            <i class="fas fa-leaf"></i>
+            <span data-ar="حالة البيئة" data-en="Environment Status">حالة البيئة</span>
+          </h3>
+          <div class="environment-indicators">
+            <div class="env-indicator" id="tempIndicator">
+              <i class="fas fa-thermometer-half"></i>
+              <span data-ar="الحرارة مثالية" data-en="Temperature Optimal">الحرارة مثالية</span>
+            </div>
+            <div class="env-indicator" id="humidityIndicator">
+              <i class="fas fa-tint"></i>
+              <span data-ar="الرطوبة جيدة" data-en="Humidity Good">الرطوبة جيدة</span>
+            </div>
+            <div class="env-indicator" id="soilIndicator">
+              <i class="fas fa-seedling"></i>
+              <span data-ar="التربة رطبة" data-en="Soil Moist">التربة رطبة</span>
+            </div>
+            <div class="env-indicator" id="lightIndicator">
+              <i class="fas fa-sun"></i>
+              <span data-ar="الإضاءة كافية" data-en="Light Sufficient">الإضاءة كافية</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="alerts-section" id="alertsSection">
+        <h3>
+          <i class="fas fa-exclamation-triangle"></i>
+          <span data-ar="التنبيهات" data-en="Alerts">التنبيهات</span>
+        </h3>
+        <div class="alerts-container" id="alertsContainer">
+          <div class="no-alerts" data-ar="لا توجد تنبيهات حالياً" data-en="No alerts currently">لا توجد تنبيهات حالياً</div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <canvas id="chart" width="400" height="200"></canvas>
-
-  <footer id="footer">
-    Made by <a href="#">Ahmed</a> & <a href="#">Abdulmajeed</a>
-  </footer>
-
-  <script type="module" src="script.js"></script>
-  <script type="module" src="ui.js"></script>
-  <script type="module" src="chart.js"></script>
+  <script type="module" src="firebase-config.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>

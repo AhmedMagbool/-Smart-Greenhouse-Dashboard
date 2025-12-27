@@ -1,13 +1,11 @@
-<img width="1900" height="870" alt="image" src="https://github.com/user-attachments/assets/f4e3f3a3-09dd-4db4-aabf-ba5d18eaa8a7" /># 🌿 Smart Greenhouse Monitoring System
+<img width="1900" height="870" alt="image" src="https://github.com/user-attachments/assets/4645b873-ed86-4af2-b8e8-1cc2bbc9f2f7" />
 
 A full-stack IoT project for monitoring greenhouse conditions using real-time sensor data and a modern web dashboard. Built using **ESP32**, **MongoDB**, **Node.js**, and a responsive frontend with **Chart.js**, **i18next**, and support for dark mode and Arabic/English languages.
 
 ---
 
-<img width="1919" height="876" alt="image" src="https://github.com/user-attachments/assets/2bdb3f50-aa85-462b-8348-627fea88b227" />
 
-> 🔴 Live Demo: [GitHub Pages Link](https://ahmedmagbool.github.io/Smart-GreenhouseDashboard/)  
-<img width="1900" height="870" alt="image" src="https://github.com/user-attachments/assets/4645b873-ed86-4af2-b8e8-1cc2bbc9f2f7" />
+> 🔴 Live Demo: [GitHub Pages Link](https://ahmedmagbool.github.io/-Smart-Greenhouse-Dashboard/)  
 
 ---
 
